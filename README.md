@@ -1,6 +1,6 @@
 ## illegal_parking_alert_program.py
-- Imaginary app to send SMS alert to the owner of illegally parked car
-- As photo of car number plate uploaded to S3 bucket as a trigger, lambda function is executed. 
+- Imaginary app that sends SMS alert to the owner of illegally parked car
+- With a photo of car number plate being uploaded to S3 bucket as a trigger, lambda function is executed. 
 - First, plate number is detected using Rekognition. 
 - Second, the contact phone number associated with the plate number is read from CSV file. 
 - Lastly, a SMS alert is sent to the phone number, and the uploaded photo is deleted from S3 bucket.
