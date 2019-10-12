@@ -1,0 +1,92 @@
+# Execution Role
+
+{
+  "permissionsBoundary": {},
+  "roleName": "ROLE_NAME", # Enter role name
+  "policies": [
+    # s3 Policy to be created at IAM - inline policy 
+    {
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "s3:GetObject", # Permissions to access s3
+              "s3:PutObject",
+              "s3:DeleteObject"
+            ],
+            "Resource": [
+              "arn:aws:s3:::YOUR_BUCKET_NAME/*" # Enter bucket name
+            ]
+          }
+        ]
+      },
+      "name": "YOUR_s3_POLYCY_NAME", # Enter policy name 
+      "type": "inline" # inline policy to be written in JSON format
+    },
+      # Rekognition Full access
+    {
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "rekognition:*"
+            ],
+            "Resource": "*"
+          }
+        ]
+      },
+      "name": "AmazonRekognitionFullAccess",
+      "id": "ID_NUMBER", # your ID number
+      "type": "managed",
+      "arn": "arn:aws:iam::aws:policy/AmazonRekognitionFullAccess"
+    },
+      # Lambda basic execution access
+    {
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Action": [
+              "logs:CreateLogGroup",
+              "logs:CreateLogStream",
+              "logs:PutLogEvents"
+            ],
+            "Resource": "*"
+          }
+        ]
+      },
+      "name": "AWSLambdaBasicExecutionRole",
+      "id": "ID_NUMBER", # your ID number
+      "type": "managed",
+      "arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+    },
+      # SNS FULL access
+    {
+      "document": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Action": [
+              "sns:*"
+            ],
+            "Effect": "Allow",
+            "Resource": "*"
+          }
+        ]
+      },
+      "name": "AmazonSNSFullAccess",
+      "id": "ID_NUMBER", # your ID number
+      "type": "managed",
+      "arn": "arn:aws:iam::aws:policy/AmazonSNSFullAccess"
+    }
+  ],
+  "trustedEntities": [
+    "lambda.amazonaws.com"
+  ]
+}
+
