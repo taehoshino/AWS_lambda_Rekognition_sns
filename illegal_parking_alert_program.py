@@ -9,6 +9,7 @@ import pandas as pd
 print('Calling lambda function...')
 
 # setup clients
+# Define ACCESS_KEY and ACCESS_SECRET as environmental variables/or you may define them as arguments of the following methods
 s3 = boto3.client('s3')
 rekognition = boto3.client('rekognition')
 sns = boto3.client('sns')
